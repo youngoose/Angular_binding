@@ -6,42 +6,22 @@ import { Component, OnInit } from '@angular/core';
     <h2>
       Welcome {{ name }}
     </h2>
-    <input [id]="myId" type="text" value="Eddy">
-    <input bind-disabled="isDisabled" id="{{ myId }}" type="text" value="Eddy">
-
-    <h2 class="text-success">Codevolution</h2>
-    <h2 [class]="successClass">Codevolution</h2>
-    
-    <h2 class="text-special" [class]="successClass">Codevolution</h2>
-    <h2 [class.text-danger]="hasError">Codevolution</h2>
-
-    <h2 [ngClass]="messageClasses">Codevolution</h2>
-
+    <h2 [style.color]="hasError ? 'red' : 'green'">Style Binding</h2>
+    <h2 [style.color]="highlightColor">Style Binding 2</h2>
+    <h2 [ngStyle]="titleStyles">Style Binding 3</h2>
   `,
-  styles: [`
-    .text-success {
-      color: green;
-    }
-    .text-danger {
-      color: red;
-    }
-    .text-special {
-      font-style: italic;
-    }
-  `]
+  styles: []
 })
 export class TestComponent implements OnInit {
 
   public name = "Eddy";
-  public myId = "testId";
-  public isDisabled = false;
 
-  public hasError = true;
+  public hasError = false;
   public isSpecial = true;
-  public messageClasses = {
-    "text-success": !this.hasError,
-    "text-danger": this.hasError,
-    "text-special": this.isSpecial
+  public highlightColor = "orange";
+  public titleStyles = {
+    color: "blue",
+    fontStyle: "italic"
   }
 
   constructor() { }
